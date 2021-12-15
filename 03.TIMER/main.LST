@@ -1,0 +1,49 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/17/2021 17:16:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Software\keil4_bluebridge\C51\BIN\C51.EXE main.c BROWSE INCDIR(.\driver) DEBUG OBJECTEXTEND TABS
+                    -(2)
+
+line level    source
+
+   1          #include "led.h"
+   2          #include "exti.h"
+   3          #include "timer.h"
+   4          
+   5          
+   6          void main(){
+   7   1          led_init();
+   8   1          //exti_init();
+   9   1          timer1_init();
+  10   1          while(1){
+  11   2          }
+  12   1      }
+  13          
+  14          void timer_1(void)interrupt 3
+  15          {
+  16   1        static int ms = 0;
+  17   1        static int sec = 0;
+  18   1        ms++;
+  19   1        
+  20   1        if(!(ms % 1000))
+  21   1        {
+  22   2          sec++;
+  23   2          led_display(sec);
+  24   2        }
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     98    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

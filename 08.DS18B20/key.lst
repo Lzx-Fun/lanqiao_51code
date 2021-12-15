@@ -1,0 +1,81 @@
+C51 COMPILER V9.60.0.0   KEY                                                               11/02/2021 13:18:57 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN key.obj
+COMPILER INVOKED BY: D:\Software\keil5\C51\BIN\C51.EXE driver\key.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\driver) DEBUG OBJE
+                    -CTEXTEND PRINT(.\key.lst) TABS(2) OBJECT(key.obj)
+
+line level    source
+
+   1          #include "key.h"
+   2          
+   3          unsigned char key_read()
+   4          {
+   5   1        unsigned int  Key_New;
+   6   1        unsigned char Key_Val;
+   7   1        P44 = 0; P42 = 1; P35 = 1; P34 = 1; // 第1列
+   8   1        Key_New = P3;
+   9   1        P44 = 1; P42 = 0; P35 = 1; P34 = 1; // 第2列
+  10   1        Key_New = (Key_New<<4) | (P3&0x0f);
+  11   1        P44 = 1; P42 = 1; P35 = 0; P34 = 1; // 第3列
+  12   1        Key_New = (Key_New<<4) | (P3&0x0f);
+  13   1        P44 = 1; P42 = 1; P35 = 1; P34 = 0; // 第4列
+  14   1        Key_New = (Key_New<<4) | (P3&0x0f);
+  15   1      
+  16   1        switch(~Key_New) 
+  17   1        {
+  18   2          case 0x8000: Key_Val = 4; break;  // S4
+  19   2          case 0x4000: Key_Val = 5; break;  // S5
+  20   2          case 0x2000: Key_Val = 6; break;  // S6
+  21   2          case 0x1000: Key_Val = 7; break;  // S7
+  22   2          case 0x0800: Key_Val = 8; break;  // S8
+  23   2          case 0x0400: Key_Val = 9; break;  // S9
+  24   2          case 0x0200: Key_Val = 10; break; // S10
+  25   2          case 0x0100: Key_Val = 11; break; // S11
+  26   2          case 0x0080: Key_Val = 12; break; // S12
+  27   2          case 0x0040: Key_Val = 13; break; // S13
+  28   2          case 0x0020: Key_Val = 14; break; // S14
+  29   2          case 0x0010: Key_Val = 15; break; // S15
+  30   2          case 0x0008: Key_Val = 16; break; // S16
+  31   2          case 0x0004: Key_Val = 17; break; // S17
+  32   2          case 0x0002: Key_Val = 18; break; // S18
+  33   2          case 0x0001: Key_Val = 19; break; // S19
+  34   2          default: Key_Val = 0;
+  35   2        }
+  36   1        return Key_Val;
+  37   1      }
+  38          
+  39          
+  40          
+  41          
+  42          
+  43          
+  44          
+  45          
+  46          
+  47          
+  48          
+  49          
+  50          
+  51          
+  52          /*
+  53            
+  54          
+C51 COMPILER V9.60.0.0   KEY                                                               11/02/2021 13:18:57 PAGE 2   
+
+  55          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    262    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

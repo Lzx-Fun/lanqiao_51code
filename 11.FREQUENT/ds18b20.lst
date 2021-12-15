@@ -1,0 +1,112 @@
+C51 COMPILER V9.60.0.0   DS18B20                                                           05/30/2021 11:50:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DS18B20
+OBJECT MODULE PLACED IN ds18b20.obj
+COMPILER INVOKED BY: D:\Software\keil5\C51\BIN\C51.EXE driver\ds18b20.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\driver) DEBUG 
+                    -OBJECTEXTEND PRINT(.\ds18b20.lst) TABS(2) OBJECT(ds18b20.obj)
+
+line level    source
+
+   1          /*
+   2            程序说明: 单总线驱动程序
+   3            软件环境: Keil uVision 4.10 
+   4            硬件环境: CT107单片机综合实训平台(外部晶振12MHz) STC89C52RC单片机
+   5            日    期: 2011-8-9
+   6          */
+   7          #include "ds18b20.h"
+   8          sbit DQ = P1^4;  //单总线接口
+   9          
+  10          //单总线延时函数
+  11          void Delay_OneWire(unsigned int t)  //STC89C52RC
+  12          {
+  13   1        unsigned char i;
+  14   1        while(t--){
+  15   2          for(i=0;i<12;i++);
+  16   2        }
+  17   1      }
+  18          
+  19          //通过单总线向DS18B20写一个字节
+  20          void Write_DS18B20(unsigned char dat)
+  21          {
+  22   1        unsigned char i;
+  23   1        for(i=0;i<8;i++)
+  24   1        {
+  25   2          DQ = 0;
+  26   2          DQ = dat&0x01;
+  27   2          Delay_OneWire(5);
+  28   2          DQ = 1;
+  29   2          dat >>= 1;
+  30   2        }
+  31   1        Delay_OneWire(5);
+  32   1      }
+  33          
+  34          //从DS18B20读取一个字节
+  35          unsigned char Read_DS18B20(void)
+  36          {
+  37   1        unsigned char i;
+  38   1        unsigned char dat;
+  39   1        
+  40   1        for(i=0;i<8;i++)
+  41   1        {
+  42   2          DQ = 0;
+  43   2          dat >>= 1;
+  44   2          DQ = 1;
+  45   2          if(DQ)
+  46   2          {
+  47   3            dat |= 0x80;
+  48   3          }     
+  49   2          Delay_OneWire(5);
+  50   2        }
+  51   1        return dat;
+  52   1      }
+  53          
+  54          //DS18B20设备初始化
+C51 COMPILER V9.60.0.0   DS18B20                                                           05/30/2021 11:50:17 PAGE 2   
+
+  55          bit init_ds18b20(void)
+  56          {
+  57   1          bit initflag = 0;
+  58   1          
+  59   1          DQ = 1;
+  60   1          Delay_OneWire(12);
+  61   1          DQ = 0;
+  62   1          Delay_OneWire(80);
+  63   1          DQ = 1;
+  64   1          Delay_OneWire(10); 
+  65   1          initflag = DQ;     
+  66   1          Delay_OneWire(5);
+  67   1        
+  68   1          return initflag;
+  69   1      }
+  70          
+  71          unsigned int rd_temperature(void)
+  72          {
+  73   1        unsigned char low, high;
+  74   1      
+  75   1        init_ds18b20();         // 初始化
+  76   1        Write_DS18B20(0xCC);        // 跳过ROM
+  77   1        Write_DS18B20(0x44);        // 转换温度
+  78   1       
+  79   1        init_ds18b20();
+  80   1        Write_DS18B20(0xCC);
+  81   1        Write_DS18B20(0xBE);        // 读暂存器
+  82   1        low = Read_DS18B20();       // 低字节
+  83   1        high = Read_DS18B20();      // 高字节
+  84   1      
+  85   1        return (high<<8)+low;
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    188    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

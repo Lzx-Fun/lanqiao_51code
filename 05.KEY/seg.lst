@@ -1,0 +1,73 @@
+C51 COMPILER V9.60.0.0   SEG                                                               06/02/2021 16:02:47 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SEG
+OBJECT MODULE PLACED IN seg.obj
+COMPILER INVOKED BY: D:\Software\keil5\C51\BIN\C51.EXE driver\seg.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\driver) DEBUG OBJE
+                    -CTEXTEND PRINT(.\seg.lst) TABS(2) OBJECT(seg.obj)
+
+line level    source
+
+   1          #include "seg.h"
+   2          void seg_init(void)
+   3          {
+   4   1        P0 = 0x00;//COM1为高
+   5   1        P2 = P2 & 0xDF | 0xC0;
+   6   1        P2 &= 0x1F;
+   7   1        
+   8   1        
+   9   1        P0 = 0xC0;
+  10   1        P2 |= 0xEF;
+  11   1        P2 &= 0x1F;
+  12   1      
+  13   1        
+  14   1      }
+  15          
+  16          void seg_display(unsigned char pos, unsigned char num)
+  17          {
+  18   1        unsigned char temp;
+  19   1        switch(num){
+  20   2          case 0:temp = 0xc0;break;
+  21   2          case 1:temp = 0xf9;break;
+  22   2          case 2:temp = 0xa4;break;
+  23   2          case 3:temp = 0xb0;break;
+  24   2          case 4:temp = 0x99;break;
+  25   2          case 5:temp = 0x92;break;
+  26   2          case 6:temp = 0x82;break;
+  27   2          case 7:temp = 0xf8;break;
+  28   2          case 8:temp = 0x80;break;
+  29   2          case 9:temp = 0x90;break;
+  30   2          case 10:temp = 0xff;break;
+  31   2        }
+  32   1        //消隐
+  33   1        P0 = 0xFF;
+  34   1        P2 |= 0xE0;
+  35   1        P2 &= 0x1F;
+  36   1        
+  37   1        //控制位选
+  38   1        P0 = 1<<pos;//COM1为高
+  39   1        P2 = P2 & 0xDF | 0xC0;//导通Y6
+  40   1        P2 &= 0x1F;
+  41   1        
+  42   1        //控制段选
+  43   1        P0 = temp;
+  44   1        P2 |= 0xE0;
+  45   1        P2 &= 0x1F;
+  46   1      
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    154    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   SEG                                                               06/02/2021 16:02:47 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

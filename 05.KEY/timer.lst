@@ -1,0 +1,53 @@
+C51 COMPILER V9.60.0.0   TIMER                                                             06/02/2021 15:59:30 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN timer.obj
+COMPILER INVOKED BY: D:\Software\keil5\C51\BIN\C51.EXE driver\timer.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\driver) DEBUG OB
+                    -JECTEXTEND PRINT(.\timer.lst) TABS(2) OBJECT(timer.obj)
+
+line level    source
+
+   1          #include "timer.h"
+   2          void timer1_init()
+   3          {
+   4   1        AUXR &= 0xBF;//配置定时器1为12分频
+   5   1        TMOD &= 0x0F;//配置定时器1工作在模式0，使用定时器，打开定时器
+   6   1        TL1 = (65536-1000)%256;
+   7   1        TH1 = (65536-1000)/256;
+   8   1        TF1 = 0;
+   9   1        TR1 = 1;
+  10   1        //TCON = TCON & 0x7F | 0x40;
+  11   1        //IE |= 1<<3;
+  12   1        ET1 = 1;
+  13   1        EA = 1;
+  14   1      }
+  15          /*
+  16          void timer_1(void)interrupt 3
+  17          {
+  18            static int ms = 0;
+  19            static int sec = 0;
+  20            ms++;
+  21            
+  22            if(!(ms % 1000))
+  23            {
+  24              sec++;
+  25              led_display(sec);
+  26            }
+  27          }*/
+  28          
+  29          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     21    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

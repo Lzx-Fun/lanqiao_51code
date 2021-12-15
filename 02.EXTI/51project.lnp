@@ -1,0 +1,5 @@
+"main.obj",
+"led.obj",
+"exti.obj" 
+TO "51project" 
+RAMSIZE(256) 

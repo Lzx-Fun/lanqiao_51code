@@ -1,0 +1,14 @@
+"main.obj",
+"led.obj",
+"exti.obj",
+"timer.obj",
+"seg.obj",
+"key.obj",
+"uart.obj",
+"ds1302.obj",
+"ds18b20.obj",
+"iic.obj",
+"PCF8591.obj",
+"at24c02.obj" 
+TO "51project" 
+RAMSIZE(256) 

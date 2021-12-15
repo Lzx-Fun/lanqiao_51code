@@ -1,0 +1,267 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    06/25/2021  13:47:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\SOFTWARE\KEIL5\C51\BIN\BL51.EXE main.obj, led.obj, exti.obj TO 51project RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  led.obj (LED)
+  exti.obj (EXTI)
+  D:\SOFTWARE\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\SOFTWARE\KEIL5\C51\LIB\C51S.LIB (?C?SIDIV)
+  D:\SOFTWARE\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+  D:\SOFTWARE\KEIL5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  51project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?EXTI
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     000BH     UNIT         ?PR?EXTI_INIT?EXTI
+            CODE    0011H     0001H     UNIT         ?PR?LED_INIT?MAIN
+                    0012H     0001H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+            CODE    0016H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00A2H     008BH     UNIT         ?C?LIB_CODE
+            CODE    012DH     0057H     UNIT         ?PR?EXTI_0?EXTI
+            CODE    0184H     0057H     UNIT         ?PR?EXTI_1?EXTI
+            CODE    01DBH     001EH     UNIT         ?PR?_DELAY?LED
+            CODE    01F9H     0011H     UNIT         ?PR?_LED_DISPLAY?LED
+            CODE    020AH     0010H     UNIT         ?PR?LED_INIT?LED
+            CODE    021AH     0009H     UNIT         ?C_INITSEG
+            CODE    0223H     0008H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   51project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?EXTI_0?EXTI
+  +--> ?PR?_LED_DISPLAY?LED
+
+*** NEW ROOT ***************************************************
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/25/2021  13:47:04  PAGE 2
+
+
+?PR?EXTI_1?EXTI
+  +--> ?PR?_LED_DISPLAY?LED
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?LED_INIT?MAIN
+  +--> ?PR?EXTI_INIT?EXTI
+
+
+
+IGNORED SYMBOLS:
+   LED_INIT
+
+
+
+SYMBOL TABLE OF MODULE:  51project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:0223H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0011H         PUBLIC        led_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0223H         LINE#         6
+  C:0223H         LINE#         7
+  C:0226H         LINE#         8
+  C:0229H         LINE#         9
+  C:0229H         LINE#         16
+  -------         ENDPROC       MAIN
+  -------         PROC          LED_INIT
+  C:0011H         LINE#         19
+  C:0011H         LINE#         22
+  -------         ENDPROC       LED_INIT
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        LED
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/25/2021  13:47:04  PAGE 3
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  C:01DBH         PUBLIC        _delay
+  C:01F9H         PUBLIC        _led_display
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00A0H.5       PUBLIC        P25
+  B:00A0H.6       PUBLIC        P26
+  B:00A0H.7       PUBLIC        P27
+  C:020AH         PUBLIC        led_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          LED_INIT
+  C:020AH         LINE#         2
+  C:020AH         LINE#         3
+  C:020AH         LINE#         4
+  C:020DH         LINE#         5
+  C:020FH         LINE#         6
+  C:0211H         LINE#         7
+  C:0213H         LINE#         9
+  C:0215H         LINE#         10
+  C:0217H         LINE#         11
+  C:0219H         LINE#         12
+  -------         ENDPROC       LED_INIT
+  -------         PROC          _LED_DISPLAY
+  D:0007H         SYMBOL        num
+  C:01F9H         LINE#         14
+  C:01F9H         LINE#         15
+  C:01F9H         LINE#         16
+  C:01FDH         LINE#         18
+  C:01FFH         LINE#         19
+  C:0201H         LINE#         20
+  C:0203H         LINE#         22
+  C:0205H         LINE#         23
+  C:0207H         LINE#         24
+  C:0209H         LINE#         25
+  -------         ENDPROC       _LED_DISPLAY
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        num
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:01DBH         LINE#         27
+  C:01DBH         LINE#         28
+  C:01DBH         LINE#         30
+  C:01E5H         LINE#         31
+  C:01F8H         LINE#         32
+  -------         ENDPROC       _DELAY
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/25/2021  13:47:04  PAGE 4
+
+
+  -------         ENDMOD        LED
+
+  -------         MODULE        EXTI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:012DH         PUBLIC        exti_0
+  C:0184H         PUBLIC        exti_1
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.2       PUBLIC        IT1
+  B:00A8H.2       PUBLIC        EX1
+  C:0006H         PUBLIC        exti_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          EXTI_INIT
+  C:0006H         LINE#         2
+  C:0006H         LINE#         3
+  C:0006H         LINE#         4
+  C:0008H         LINE#         5
+  C:000AH         LINE#         7
+  C:000CH         LINE#         8
+  C:000EH         LINE#         10
+  C:0010H         LINE#         11
+  -------         ENDPROC       EXTI_INIT
+  -------         PROC          EXTI_0
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:012DH         LINE#         13
+  C:014AH         LINE#         16
+  C:0152H         LINE#         17
+  C:0160H         LINE#         18
+  C:0164H         LINE#         20
+  C:0169H         LINE#         21
+  -------         ENDPROC       EXTI_0
+  -------         PROC          EXTI_1
+  -------         DO            
+  D:000AH         SYMBOL        i
+  -------         ENDDO         
+  C:0184H         LINE#         23
+  C:01A1H         LINE#         26
+  C:01A9H         LINE#         27
+  C:01B7H         LINE#         28
+  C:01BBH         LINE#         30
+  C:01C0H         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/25/2021  13:47:04  PAGE 5
+
+
+  -------         ENDPROC       EXTI_1
+  -------         ENDMOD        EXTI
+
+  -------         MODULE        ?C?SIDIV
+  C:00A2H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:00D8H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  LED_INIT
+    MODULE:  led.obj (LED)
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED_INIT?LED
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LED
+
+Program Size: data=13.0 xdata=0 code=554
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  1 ERROR(S)

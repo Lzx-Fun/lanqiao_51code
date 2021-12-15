@@ -1,0 +1,401 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/22/2021  19:52:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\SOFTWARE\KEIL4_BLUEBRIDGE\C51\BIN\BL51.EXE main.obj, led.obj, exti.obj, timer.obj, seg.obj TO 51project RAMSIZE (256)
+>> 
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  led.obj (LED)
+  exti.obj (EXTI)
+  timer.obj (TIMER)
+  seg.obj (SEG)
+  D:\SOFTWARE\KEIL4_BLUEBRIDGE\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\SOFTWARE\KEIL4_BLUEBRIDGE\C51\LIB\C51S.LIB (?C?SIDIV)
+  D:\SOFTWARE\KEIL4_BLUEBRIDGE\C51\LIB\C51S.LIB (?C_INIT)
+  D:\SOFTWARE\KEIL4_BLUEBRIDGE\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  51project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?EXTI
+            DATA    000CH     0004H     UNIT         ?DT?TIMER
+            DATA    0010H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     000BH     UNIT         ?PR?EXTI_INIT?EXTI
+                    0011H     0002H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     0005H                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+            CODE    001EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    00AAH     008BH     UNIT         ?C?LIB_CODE
+            CODE    0135H     007BH     UNIT         ?PR?_SEG_DISPLAY?SEG
+            CODE    01B0H     005AH     UNIT         ?PR?TIMER_1?TIMER
+            CODE    020AH     0057H     UNIT         ?PR?EXTI_0?EXTI
+            CODE    0261H     0057H     UNIT         ?PR?EXTI_1?EXTI
+            CODE    02B8H     0029H     UNIT         ?PR?MAIN?MAIN
+            CODE    02E1H     001EH     UNIT         ?PR?_DELAY?LED
+            CODE    02FFH     0018H     UNIT         ?PR?SEG_INIT?SEG
+            CODE    0317H     0015H     UNIT         ?PR?TIMER1_INIT?TIMER
+            CODE    032CH     0011H     UNIT         ?PR?_LED_DISPLAY?LED
+            CODE    033DH     0011H     UNIT         ?C_INITSEG
+            CODE    034EH     0010H     UNIT         ?PR?LED_INIT?LED
+
+
+
+OVERLAY MAP OF MODULE:   51project (MAIN)
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 2
+
+
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?PR?EXTI_0?EXTI                -----    -----
+  +--> ?PR?_LED_DISPLAY?LED
+
+*** NEW ROOT ***************************************************
+
+?PR?EXTI_1?EXTI                -----    -----
+  +--> ?PR?_LED_DISPLAY?LED
+
+*** NEW ROOT ***************************************************
+
+?PR?TIMER_1?TIMER              -----    -----
+  +--> ?PR?_LED_DISPLAY?LED
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  0010H    0002H
+  +--> ?PR?SEG_INIT?SEG
+  +--> ?PR?_SEG_DISPLAY?SEG
+
+
+
+SYMBOL TABLE OF MODULE:  51project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:02B8H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0010H         SYMBOL        i
+  -------         ENDDO         
+  C:02B8H         LINE#         6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 3
+
+
+  C:02B8H         LINE#         7
+  C:02BDH         LINE#         11
+  C:02C0H         LINE#         12
+  C:02C0H         LINE#         15
+  C:02C5H         LINE#         16
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  C:02E1H         PUBLIC        _delay
+  C:032CH         PUBLIC        _led_display
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00A0H.5       PUBLIC        P25
+  B:00A0H.6       PUBLIC        P26
+  B:00A0H.7       PUBLIC        P27
+  C:034EH         PUBLIC        led_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          LED_INIT
+  C:034EH         LINE#         2
+  C:034EH         LINE#         3
+  C:034EH         LINE#         4
+  C:0351H         LINE#         5
+  C:0353H         LINE#         6
+  C:0355H         LINE#         7
+  C:0357H         LINE#         9
+  C:0359H         LINE#         10
+  C:035BH         LINE#         11
+  C:035DH         LINE#         12
+  -------         ENDPROC       LED_INIT
+  -------         PROC          _LED_DISPLAY
+  D:0007H         SYMBOL        num
+  C:032CH         LINE#         14
+  C:032CH         LINE#         15
+  C:032CH         LINE#         16
+  C:0330H         LINE#         18
+  C:0332H         LINE#         19
+  C:0334H         LINE#         20
+  C:0336H         LINE#         22
+  C:0338H         LINE#         23
+  C:033AH         LINE#         24
+  C:033CH         LINE#         25
+  -------         ENDPROC       _LED_DISPLAY
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        num
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 4
+
+
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:02E1H         LINE#         27
+  C:02E1H         LINE#         28
+  C:02E1H         LINE#         30
+  C:02EBH         LINE#         31
+  C:02FEH         LINE#         32
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        LED
+
+  -------         MODULE        EXTI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:020AH         PUBLIC        exti_0
+  C:0261H         PUBLIC        exti_1
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.2       PUBLIC        IT1
+  B:00A8H.2       PUBLIC        EX1
+  C:0006H         PUBLIC        exti_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          EXTI_INIT
+  C:0006H         LINE#         3
+  C:0006H         LINE#         4
+  C:0006H         LINE#         5
+  C:0008H         LINE#         6
+  C:000AH         LINE#         8
+  C:000CH         LINE#         9
+  C:000EH         LINE#         11
+  C:0010H         LINE#         12
+  -------         ENDPROC       EXTI_INIT
+  -------         PROC          EXTI_0
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:020AH         LINE#         14
+  C:0227H         LINE#         18
+  C:022FH         LINE#         19
+  C:023DH         LINE#         20
+  C:0241H         LINE#         22
+  C:0246H         LINE#         25
+  -------         ENDPROC       EXTI_0
+  -------         PROC          EXTI_1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 5
+
+
+  -------         DO            
+  D:000AH         SYMBOL        i
+  -------         ENDDO         
+  C:0261H         LINE#         27
+  C:027EH         LINE#         30
+  C:0286H         LINE#         31
+  C:0294H         LINE#         32
+  C:0298H         LINE#         34
+  C:029DH         LINE#         35
+  -------         ENDPROC       EXTI_1
+  -------         ENDMOD        EXTI
+
+  -------         MODULE        TIMER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  C:01B0H         PUBLIC        timer_1
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008EH         PUBLIC        AUXR
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.7       PUBLIC        TF1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  C:0317H         PUBLIC        timer1_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER1_INIT
+  C:0317H         LINE#         2
+  C:0317H         LINE#         3
+  C:0317H         LINE#         4
+  C:031AH         LINE#         5
+  C:031DH         LINE#         6
+  C:0320H         LINE#         7
+  C:0323H         LINE#         8
+  C:0325H         LINE#         9
+  C:0327H         LINE#         12
+  C:0329H         LINE#         13
+  C:032BH         LINE#         14
+  -------         ENDPROC       TIMER1_INIT
+  -------         PROC          TIMER_1
+  -------         DO            
+  D:000CH         SYMBOL        ms
+  D:000EH         SYMBOL        sec
+  -------         ENDDO         
+  C:01B0H         LINE#         16
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 6
+
+
+  C:01CDH         LINE#         20
+  C:01D5H         LINE#         22
+  C:01E3H         LINE#         23
+  C:01E3H         LINE#         24
+  C:01EBH         LINE#         25
+  C:01EFH         LINE#         26
+  C:01EFH         LINE#         27
+  -------         ENDPROC       TIMER_1
+  -------         ENDMOD        TIMER
+
+  -------         MODULE        SEG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0135H         PUBLIC        _seg_display
+  D:00D8H         PUBLIC        CCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:02FFH         PUBLIC        seg_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SEG_INIT
+  C:02FFH         LINE#         2
+  C:02FFH         LINE#         3
+  C:02FFH         LINE#         4
+  C:0302H         LINE#         5
+  C:030AH         LINE#         6
+  C:030DH         LINE#         9
+  C:0310H         LINE#         10
+  C:0313H         LINE#         11
+  C:0316H         LINE#         14
+  -------         ENDPROC       SEG_INIT
+  -------         PROC          _SEG_DISPLAY
+  D:0007H         SYMBOL        pos
+  D:0005H         SYMBOL        num
+  -------         DO            
+  D:0006H         SYMBOL        temp
+  -------         ENDDO         
+  C:0135H         LINE#         16
+  C:0135H         LINE#         17
+  C:0135H         LINE#         19
+  C:0160H         LINE#         20
+  C:0164H         LINE#         21
+  C:0168H         LINE#         22
+  C:016CH         LINE#         23
+  C:0170H         LINE#         24
+  C:0174H         LINE#         25
+  C:0178H         LINE#         26
+  C:017CH         LINE#         27
+  C:0180H         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/22/2021  19:52:34  PAGE 7
+
+
+  C:0184H         LINE#         29
+  C:0186H         LINE#         30
+  C:0186H         LINE#         32
+  C:0189H         LINE#         33
+  C:018CH         LINE#         34
+  C:018FH         LINE#         37
+  C:019CH         LINE#         38
+  C:01A4H         LINE#         39
+  C:01A7H         LINE#         42
+  C:01A9H         LINE#         43
+  C:01ACH         LINE#         44
+  C:01AFH         LINE#         46
+  -------         ENDPROC       _SEG_DISPLAY
+  -------         ENDMOD        SEG
+
+  -------         MODULE        ?C?SIDIV
+  C:00AAH         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:00E0H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LED_INIT?LED
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?LED
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?EXTI_INIT?EXTI
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER1_INIT?TIMER
+
+Program Size: data=19.0 xdata=0 code=855
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)

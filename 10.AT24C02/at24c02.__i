@@ -1,0 +1,1 @@
+"driver\at24c02.c" BROWSE INCDIR(.\driver) DEBUG OBJECTEXTEND PRINT(.\at24c02.lst) TABS (2) OBJECT(at24c02.obj)
